@@ -4,11 +4,11 @@
  */
 let gulp = require('gulp');
 let $ = require('gulp-load-plugins')({lazy: true});
-let protractor = require('gulp-protractor');
+let protractor = require('protractor');
 let webdriver_update = protractor.webdriver_update;
 let nodemon = require('nodemon');
 gulp.task('test', ['serve-dist'], function (cb) {
-  gulp.src(['e2e/**/*.spec.js']).pipe(protractor({
+  gulp.src(['e2e/**/*.spec.js']).pipe($.protractor.protractor({
     configFile: 'protractor.conf.js',
   })).on('error', function (e) {
     console.log(e);
