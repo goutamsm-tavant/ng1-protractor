@@ -2,6 +2,7 @@
 /**
  * End to end testing task using protractor and nodemon server
  */
+let gulp = require('gulp');
 let $ = require('gulp-load-plugins')({lazy: true});
 let protractor = require('gulp-protractor');
 let webdriver_update = protractor.webdriver_update;
