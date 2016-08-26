@@ -1,4 +1,4 @@
-var ng1Protractor = function () { };
+'use strict';
 /**
  * End to end testing task using protractor and nodemon server
  */
@@ -18,6 +18,3 @@ gulp.task('test', ['serve-dist'], function (cb) {
     // cb();
   });
 });
-
-var instance = new ng1Protractor();
-module.exports = instance;
