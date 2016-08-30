@@ -68,7 +68,11 @@ gulp.task('rename_template', ['generate_ts'], function () {
 
 var concat = require('gulp-concat');
 gulp.task('create_test', ['compile_test'], function () {
-  return gulp.src('./.build/e2e/**/*.js')
+  let sourceFiles = [
+    './.build/e2e/**/*.po.js',
+    './.build/e2e/**/*.spec.js'
+  ];
+  return gulp.src(sourceFiles)
     .pipe(concat('test.js'))
     .pipe(gulp.dest('.build/e2e/'));
 });
