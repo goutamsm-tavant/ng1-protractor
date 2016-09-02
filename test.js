@@ -8,6 +8,7 @@ let protractor = require('protractor');
 let webdriver_update = protractor.webdriver_update;
 let nodemon = require('nodemon');
 var sequence = require('run-sequence');
+var args = require('yargs').argv;
 gulp.task('test',['clean_test'], function (cb) {
 
   gulp.src(['.build/**/test.js']).pipe($.protractor.protractor({
@@ -70,8 +71,18 @@ var concat = require('gulp-concat');
 gulp.task('create_test', ['compile_test'], function () {
   let sourceFiles = [
     './.build/e2e/**/*.po.js',
-    './.build/e2e/**/*.spec.js'
   ];
+  var file = args.file;
+  //console.log('File being pushed*****:'+file);
+  if(file){
+    sourceFiles.push('./.build/e2e/**/'+file+'.js');
+  }else{
+     sourceFiles.push('./.build/e2e/**/*.spec.js');
+  }
+  // let sourceFiles = [
+  //   './.build/e2e/**/*.po.js',
+  //   './.build/e2e/**/*.spec.js'
+  // ];
   return gulp.src(sourceFiles)
     .pipe(concat('test.js'))
     .pipe(gulp.dest('.build/e2e/'));
